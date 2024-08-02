@@ -122,7 +122,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 var formElement = document.querySelector("#searchForm");
 
 // Attach a submit event listener to the form
-var submitHandler = formElement.addEventListener("submit", function (event) {
+formElement.addEventListener("submit", function (event) {
   // Prevent default form submission
   event.preventDefault();
 
@@ -155,6 +155,28 @@ var submitHandler = formElement.addEventListener("submit", function (event) {
       formElement.removeChild(_errorElement);
     }
   }
+  //get a list of all the article elements 
+  var allArticles = document.querySelectorAll("article");
+
+  //get a list of the article titles <innerHTML> values of the <h2> element
+  allArticles.forEach(function (article) {
+    var title = article.querySelector("h2").innerHTML;
+
+    //set the titles toLowerCase
+    var lowerTitle = title.toLowerCase();
+
+    //set searchTerm toLowerCase
+    var lowerSearchTerm = inputValue.toLowerCase();
+
+    //remove hidden class from the artcle if theres a match
+    if (lowerTitle.includes(lowerSearchTerm)) {
+      article.classList.remove("hidden");
+
+      //if theres no match add hidden class from article
+    } else {
+      article.classList.add("hidden");
+    }
+  });
 });
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -181,7 +203,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64798" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56286" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

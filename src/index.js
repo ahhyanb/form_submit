@@ -2,7 +2,7 @@
 const formElement = document.querySelector("#searchForm");
 
 // Attach a submit event listener to the form
-const submitHandler = formElement.addEventListener("submit", (event) => {
+formElement.addEventListener("submit", (event) => {
     
     // Prevent default form submission
     event.preventDefault();
@@ -37,14 +37,28 @@ const submitHandler = formElement.addEventListener("submit", (event) => {
             formElement.removeChild(errorElement);
         }
     }
+//get a list of all the article elements 
+const allArticles = document.querySelectorAll("article");
+
+//get a list of the article titles <innerHTML> values of the <h2> element
+allArticles.forEach((article) => {
+    const title = article.querySelector("h2").innerHTML;
+
+    //set the titles toLowerCase
+    const lowerTitle = title.toLowerCase();
+
+    //set searchTerm toLowerCase
+    const lowerSearchTerm = inputValue.toLowerCase();
+
+    //remove hidden class from the artcle if theres a match
+    if(lowerTitle.includes(lowerSearchTerm)){
+        article.classList.remove("hidden");
+
+    //if theres no match add hidden class from article
+    } else {
+        article.classList.add("hidden");
+    }
+
 });
-
-
-    
-   
-    
-    
-        
-                
-      
                
+});
