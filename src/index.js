@@ -1,11 +1,16 @@
 // Select the <form> element
-
-const formElement = document.querySelector("form");
-
-console.log(formElement);
+const formElement = document.querySelector("#searchForm");
 
 // Attach a submit event listener to the form
+const submitHandler = formElement.addEventListener((event) => {
+    
     // Prevent default form submission
+     event.preventDefault();
+
+     // Retrieve the input value
+     const inputValue = formData
+});
+   
     // Retrieve the input value
     // Check if the input value is blank (trimmed)
         // If blank:
