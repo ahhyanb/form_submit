@@ -118,9 +118,44 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"src/index.js":[function(require,module,exports) {
-/*
- Your solution here
- */
+// Select the <form> element
+var formElement = document.querySelector("#searchForm");
+
+// Attach a submit event listener to the form
+var submitHandler = formElement.addEventListener("submit", function (event) {
+  // Prevent default form submission
+  event.preventDefault();
+
+  // Retrieve the input value
+  var inputElement = formElement.querySelector("input");
+  var inputValue = inputElement.value.trim();
+
+  // Check if the input value is blank (trimmed)
+  if (inputValue === "") {
+    // If blank:
+    // Check if the error element already exists
+    var errorElement = document.getElementById("searchError");
+
+    // If not, create the error element and append it to the form
+    if (!errorElement) {
+      errorElement = document.createElement("div");
+      errorElement.className = "error";
+      errorElement.id = "searchError";
+      errorElement.textContent = "Please enter a search term";
+      formElement.appendChild(errorElement);
+    }
+
+    // If not blank:
+    // Check if the error element exists
+  } else {
+    var _errorElement = document.getElementById("searchError");
+
+    // If it does, remove it from the form
+    if (_errorElement) {
+      formElement.removeChild(_errorElement);
+    }
+  }
+});
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -146,7 +181,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64206" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64798" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
